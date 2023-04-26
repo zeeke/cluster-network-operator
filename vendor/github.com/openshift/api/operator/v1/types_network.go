@@ -107,6 +107,12 @@ type NetworkSpec struct {
 	// migration procedure allows to change the network type and the MTU.
 	// +optional
 	Migration *NetworkMigration `json:"migration,omitempty"`
+
+	// enableOvsCpuPinning makes ovn-kubernetes monitor OVS daemons CPUs and set the affinity
+	// of those process to its own CPU affinity. If unset, this property defaults to
+	// 'true'.
+	// +optional
+	EnableOvsCPUPinning *bool `json:"migration,omitempty"`
 }
 
 // NetworkMigration represents the cluster network configuration.

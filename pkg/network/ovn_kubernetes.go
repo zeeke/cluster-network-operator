@@ -360,6 +360,11 @@ func renderOVNKubernetes(conf *operv1.NetworkSpec, bootstrapResult *bootstrap.Bo
 		data.Data["OVN_MULTI_NETWORK_ENABLE"] = false
 	}
 
+	data.Data["EnableOvsCpuPinning"] = true
+	if conf.EnableOvsCPUPinning != nil && *conf.EnableOvsCPUPinning == false {
+		data.Data["EnableOvsCpuPinning"] = false
+	}
+
 	var manifestSubDir string
 	manifestDirs := make([]string, 0, 2)
 	manifestDirs = append(manifestDirs, filepath.Join(manifestDir, "network/ovn-kubernetes/common"))
